@@ -1,42 +1,27 @@
-import javax.swing.*;
-import java.awt.*;
 
+import java.io.*;
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        JFrame frame = new JFrame("Frame");
-        JTextField username = new JTextField("Enter your username");
-       username.setBounds(10,10,200,40);
-        frame.add(username);
 
-        /*JLabel label = new JLabel("Name:");
-        label.setBounds(10,200,100,40);
-        frame.add(label);*/
+       File file = new File("Priya.txt");
 
-        JTextField password = new JTextField("Enter your password");
-        password.setBounds(10,55,200,40);
-        frame.add(password);
 
-        JButton button = new JButton("Login");
-        button.setBounds(55,140,100,40);
-        frame.add(button);
+            file.createNewFile();
 
-        JButton button1 = new JButton("Forget Password?");
-        button1.setBounds(100,100,150,30);
-        frame.add(button1);
-        button.setBackground(Color.green);
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write("hello..");
+            fileWriter.close();
 
-        String[] fruits = {"Apple","Orange","Grapes"};
-        JComboBox comboBox = new JComboBox(fruits);
-        comboBox.setBounds(250,10,150,40);
-        frame.add(comboBox);
-
-        frame.setResizable(false);
-        frame.setSize(500,400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        frame.setVisible(true);
-
+             FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = bufferedReader.readLine();
+            while (line!= null)
+            {
+                 System.out.println(line);
+                 line = bufferedReader.readLine();
+            }
     }
 }
+
